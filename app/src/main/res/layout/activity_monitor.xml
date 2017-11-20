@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:pv="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
+    tools:context="com.example.secret.ai10.UI.MonitorActivity">
+
+    <include layout="@layout/top" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#eee" />
+
+    <ScrollView
+        android:id="@+id/llNoDevice"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#eee" />
+
+            <ImageView
+                android:id="@+id/imgNoDevice"
+                android:layout_width="150dp"
+                android:layout_height="109dp"
+                android:layout_marginTop="100dp"
+                android:src="@drawable/nodevice" />
+
+            <Button
+                android:id="@+id/btnNoDevice"
+                android:layout_width="274dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/border_layer_list"
+                android:paddingLeft="13dp"
+                android:paddingRight="13dp"
+                android:text="@string/no_devices"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:text="防盗监控"
+                    android:textColor="#333"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/ivBathtub"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_below="@+id/tv"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@mipmap/bathtub_gray"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tvWC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ivBathtub"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="67dp"
+                    android:layout_marginTop="3dp"
+                    android:text="浴室无人"
+                    android:textColor="#BCBCBC"
+                    android:textSize="13dp" />
+
+                <ImageView
+                    android:id="@+id/ivSofa"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_below="@+id/tv"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/ivBathtub"
+                    android:src="@mipmap/sofa_grey"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tvLivingroom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ivBathtub"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="46dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_toEndOf="@+id/tvWC"
+                    android:text="大厅无人"
+                    android:textColor="#BCBCBC"
+                    android:textSize="13dp" />
+
+                <ImageView
+                    android:id="@+id/ivBed"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_below="@+id/tv"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/ivSofa"
+                    android:src="@mipmap/bed_gray"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/tvBedroom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ivBathtub"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="43dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_toEndOf="@+id/tvLivingroom"
+                    android:text="卧室无人"
+                    android:textColor="#BCBCBC"
+                    android:textSize="13dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="#eee" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_air"
+                android:layout_width="match_parent"
+                android:layout_height="180dp">
+
+                <TextView
+                    android:id="@+id/title1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="22dp"
+                    android:text="污染指数"
+                    android:textColor="#000"
+                    android:textSize="17sp" />
+
+                <com.example.secret.ai10.view.RoundProgressBar1
+                    android:id="@+id/airQBar"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_below="@+id/title1"
+                    android:layout_marginLeft="55dp"
+                    android:layout_marginTop="10dp"
+                    pv:centreColor="#ffffff"
+                    pv:progress="20"
+                    pv:ringColor="#eeeeee"
+                    pv:ringProgressColor="#afdff9"
+                    pv:ringWidth="2dp"
+                    pv:startAngle="90"
+                    pv:textColor="#000000"
+                    pv:textIsDisplayable="false"
+                    pv:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/air"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/title1"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="35dp"
+                    android:gravity="center"
+                    android:text="113"
+                    android:textColor="#000"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/air_q"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/air"
+                    android:layout_marginStart="93dp"
+                    android:text="良"
+                    android:textColor="#8c8a8a"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/out_air_q"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="56dp"
+                    android:layout_marginTop="83dp"
+                    android:text="室外空气质量：良"
+                    android:textColor="#000"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/inside_air_q"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/out_air_q"
+                    android:layout_marginEnd="56dp"
+                    android:layout_marginTop="15dp"
+                    android:text="室内空气质量：良"
+                    android:textColor="#000"
+                    android:textSize="15sp" />
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#eee" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+
+                >
+
+                <TextView
+                    android:id="@+id/title2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="22dp"
+                    android:text="空气湿度"
+                    android:textColor="#000"
+                    android:textSize="17sp" />
+
+                <com.example.secret.ai10.view.RoundProgressBar1
+                    android:id="@+id/humBar"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_below="@+id/title2"
+                    android:layout_marginLeft="55dp"
+                    android:layout_marginTop="10dp"
+                    pv:centreColor="#ffffff"
+                    pv:progress="36"
+                    pv:ringColor="#eeeeee"
+                    pv:ringProgressColor="#afdff9"
+                    pv:ringWidth="2dp"
+                    pv:startAngle="90"
+                    pv:textColor="#000000"
+                    pv:textSize="28sp" />
+
+                <TextView
+                    android:id="@+id/out_hum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="83dp"
+                    android:layout_toEndOf="@+id/humBar"
+                    android:text="室外空气湿度：36%"
+                    android:textColor="#000"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/inside_hum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/out_hum"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toEndOf="@+id/humBar"
+                    android:text="室内空气湿度：8%"
+                    android:textColor="#000"
+                    android:textSize="15sp" />
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#eee" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+
+                >
+
+                <TextView
+                    android:id="@+id/title3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="22dp"
+                    android:text="空气温度"
+                    android:textColor="#000"
+                    android:textSize="17sp" />
+
+                <com.example.secret.ai10.view.RoundProgressBar1
+                    android:id="@+id/tempBar"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_below="@+id/title3"
+                    android:layout_marginLeft="55dp"
+                    android:layout_marginTop="10dp"
+                    pv:centreColor="#ffffff"
+                    pv:progress="36"
+                    pv:ringColor="#eeeeee"
+                    pv:ringProgressColor="#35C0C5"
+                    pv:ringWidth="2dp"
+                    pv:startAngle="90"
+                    pv:textColor="#000000"
+                    pv:textIsDisplayable="false"
+
+                    pv:textSize="28sp" />
+                <com.example.secret.ai10.view.RevertRPB
+                    android:id="@+id/tempBar1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_below="@+id/title3"
+                    android:layout_marginLeft="55dp"
+                    android:layout_marginTop="10dp"
+                    pv:centreColor="#ffffff"
+                    pv:progress="36"
+                    pv:ringColor="#eeeeee"
+                    pv:ringProgressColor="#afdff9"
+                    pv:ringWidth="2dp"
+                    pv:startAngle="90"
+                    pv:textColor="#000000"
+                    pv:textIsDisplayable="false"
+                    pv:textSize="28sp"
+                    />
+
+                <TextView
+                    android:id="@+id/temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/title3"
+                    android:layout_marginStart="73dp"
+                    android:layout_marginTop="45dp"
+                    android:text="63°C"
+                    android:textColor="#000"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/out_temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="83dp"
+                    android:layout_toEndOf="@+id/tempBar"
+                    android:text="室外空气温度：27°C"
+                    android:textColor="#000"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/inside_temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/out_temp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toEndOf="@+id/tempBar"
+                    android:text="室内空气温度：28°C"
+                    android:textColor="#000"
+                    android:textSize="15sp" />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

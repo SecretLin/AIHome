@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="68dp"
+    android:id="@+id/layout_select"
+    android:background="#35C0C5"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="已选择几项"
+        android:layout_centerInParent="true"
+        android:textSize="20dp"
+        android:textColor="#fff"
+        android:id="@+id/tvCount"
+        />
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:text="全选"
+        android:id="@+id/tvSelectAll"
+        android:textSize="18dp"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:layout_alignParentRight="true"
+        />
+    <TextView
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="全不选"
+        android:textColor="#fff"
+        android:visibility="gone"
+        android:id="@+id/tvCancelAll"
+        android:textSize="18dp"
+        android:layout_alignParentRight="true"
+        android:layout_margin="13dp"
+        />
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="#fff"
+        android:id="@+id/tvCancel"
+        android:textSize="18dp"
+        android:layout_alignParentLeft="true"
+        />
+
+</RelativeLayout>

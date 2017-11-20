@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="68dp"
+    android:background="#fff"
+    >
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@mipmap/cancel"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="33dp"
+        android:id="@+id/btnCancel"
+        />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@mipmap/confirm"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="33dp"
+        android:layout_centerVertical="true"
+        android:id="@+id/btnConfirm"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="自定义"
+        android:textSize="25sp"
+        android:textColor="#000"
+        android:layout_centerInParent="true"
+        />
+</RelativeLayout>

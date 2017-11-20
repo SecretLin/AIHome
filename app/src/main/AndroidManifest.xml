@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.secret.ai10">
+
+    <!-- Required  一些系统要求的权限，如访问网络等 -->
+    <uses-permission android:name="com.gizwits.opensource.appkit.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <!-- Optional. Required for location feature -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
+    <!-- 富媒体需要声明的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+
+    <!-- SDK 使用权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 乐鑫配置库中使用的权限（WIFI组播） -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <application
+        android:name=".GosApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="GQuAEAl2E6Dmwj3Zsw7jHfY1Dk1TEwgn" />
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+
+        <activity android:name=".UserModule.GosUserLoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 在此处填写腾讯官网申请的AppKey -->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="1105823407" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".UI.MainActivity" />
+        <activity android:name=".UserModule.GosChangeUserPasswordActivity" />
+        <activity android:name=".UserModule.GosForgetPasswordActivity" />
+        <activity android:name=".UserModule.GosRegisterUserActivity" />
+        <activity android:name=".QRCode.CaptureActivity" />
+        <activity android:name=".ConfigModule.GosDeviceReadyActivity" />
+        <activity android:name=".ConfigModule.GosDeviceResetActivity" />
+        <activity android:name=".ConfigModule.GosChooseDeviceActivity" />
+        <activity android:name=".ConfigModule.GosConfigCountdownActivity" />
+        <activity android:name=".ConfigModule.GosConfigFailedActivity" />
+        <activity android:name=".ConfigModule.GosAirlinkChooseDeviceWorkWiFiActivity" />
+        <activity android:name=".ConfigModule.GosAirlinkReadyActivity" />
+        <activity android:name=".ConfigModule.GosAirlinkConfigCountdownActivity" />
+        <activity android:name=".ConfigModule.GosModeListActivity" />
+        <activity android:name=".DeviceModuel.ControlDeviceActivity" />
+        <activity android:name=".UI.MonitorActivity" />
+        <activity android:name=".UI.ModeActivity" />
+        <activity android:name=".UI.CustomModeActivity" />
+        <activity android:name=".UI.ConstantActivity" />
+        <activity android:name=".UI.OfflineDeviceActivity" />
+        <activity android:name=".UI.DeviceListActivity" />
+        <activity android:name=".UI.UnBindDeviceActivity" />
+        <activity android:name=".UI.AuthManageActivity"></activity>
+    </application>
+
+</manifest>

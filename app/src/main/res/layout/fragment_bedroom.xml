@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_place" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#eee" />
+
+    <ScrollView
+        android:id="@+id/llNoDevice"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:visibility="gone"
+      >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgNoDevice"
+                android:layout_width="150dp"
+                android:layout_height="109dp"
+                android:layout_marginTop="100dp"
+                android:src="@drawable/nodevice" />
+
+            <Button
+                android:id="@+id/btnNoDevice"
+                android:layout_width="274dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/border_layer_list"
+                android:paddingLeft="13dp"
+                android:paddingRight="13dp"
+                android:text="@string/no_devices"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- 开灯(布尔可写) -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_marginBottom="1dp"
+                android:background="@color/white"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="40dp"
+                    android:text="开灯"
+                    android:textSize="21sp" />
+
+
+                <Switch
+                    android:id="@+id/sw_bool_LED_OnOff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="28dp"
+                    android:switchMinWidth="46dp"
+                    android:text=""
+                    android:textOff=""
+                    android:textOn=""
+                    android:thumb="@drawable/thumb"
+                    android:thumbTextPadding="15dp"
+                    android:track="@drawable/track" />
+
+
+            </RelativeLayout>
+
+
+            <!-- 开关窗(布尔可写) -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_marginBottom="1dp"
+                android:background="@color/white"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/tv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="40dp"
+                    android:text="开关窗"
+                    android:textSize="21sp" />
+
+
+                <Switch
+                    android:id="@+id/sw_bool_Win_OnOff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="28dp"
+                    android:switchMinWidth="46dp"
+                    android:text=""
+                    android:textOff=""
+                    android:textOn=""
+                    android:thumb="@drawable/thumb"
+                    android:thumbTextPadding="15dp"
+                    android:track="@drawable/track" />
+
+
+            </RelativeLayout>
+
+
+            <!-- 开关窗帘(布尔可写) -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_marginBottom="1dp"
+                android:background="@color/white"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/tv3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="40dp"
+                    android:text="开关窗帘"
+                    android:textSize="21sp" />
+
+
+                <Switch
+                    android:id="@+id/sw_bool_Curtain_OnOff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="28dp"
+                    android:switchMinWidth="46dp"
+                    android:text=""
+                    android:textOff=""
+                    android:textOn=""
+                    android:thumb="@drawable/thumb"
+                    android:thumbTextPadding="15dp"
+                    android:track="@drawable/track" />
+
+
+            </RelativeLayout>
+            <!-- 大厅空调(布尔可写) -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_marginBottom="1dp"
+                android:background="@color/white"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/tv4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="40dp"
+                    android:text="开关空调"
+                    android:textSize="21sp" />
+
+                <Switch
+                    android:id="@+id/sw_bool_AC_OnOff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="28dp"
+                    android:switchMinWidth="46dp"
+                    android:text=""
+                    android:textOff=""
+                    android:textOn=""
+                    android:thumb="@drawable/thumb"
+                    android:thumbTextPadding="15dp"
+                    android:track="@drawable/track" />
+
+
+            </RelativeLayout>
+
+            <!-- 大厅空调(布尔可写) -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_marginBottom="1dp"
+                android:background="@color/white"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/tv5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="40dp"
+                    android:text="湿度控制"
+                    android:textSize="21sp" />
+
+                <com.example.secret.ai10.view.ThridSwitchSeekBar
+                    android:id="@+id/sb_Room_Hum"
+                    android:layout_width="85dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="28dp"
+                    android:progress="50"
+                    android:progressDrawable="@drawable/gray_track"
+                    android:thumb="@drawable/thirdseekbar_gray_thumb" />
+
+
+            </RelativeLayout>
+
+
+            <!-- 大厅空调温度(数值可写) -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_marginBottom="1dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tv6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="50dp"
+                    android:text="空调温度"
+                    android:textSize="21sp" />
+
+
+                <TextView
+                    android:id="@+id/tv_data_Room_AirC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginTop="4dp"
+                    android:text="26°C"
+                    android:textColor="#6D6D6D"
+                    android:textSize="13sp" />
+
+
+                <SeekBar
+                    android:id="@+id/sb_data_Room_AirC"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="28dp"
+                    android:layout_weight="3"
+                    android:max="20"
+                    android:thumb="@drawable/seekbar_gray_thumb" />
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

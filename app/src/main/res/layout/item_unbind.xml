@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="116dp"
+    android:gravity="top">
+
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="31dp"
+        android:src="@drawable/nodevice" />
+
+    <TextView
+        android:id="@+id/tvDeviceName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="35dp"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@+id/iv"
+        android:text="家里"
+        android:textColor="#6D6D6D"
+        android:textSize="18sp" />
+
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentEnd="true"
+       android:layout_marginEnd="38dp"
+       android:text="(在线)"
+       android:textSize="20sp"
+       android:textColor="#747474"
+       android:layout_alignParentBottom="true"
+       android:layout_marginBottom="35dp"
+       android:id="@+id/on_offline" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="37dp"
+        android:background="@drawable/un_check"
+        android:button="@null"
+
+   />
+
+
+</RelativeLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="68dp"
+    android:background="#fff"
+    android:id="@+id/top_place"
+    >
+
+    <!--<ImageButton-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:src="@mipmap/add"-->
+        <!--android:background="@android:color/transparent"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:paddingEnd="13dp"-->
+        <!--android:id="@+id/addDevice"-->
+        <!--/>-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="大厅"
+        android:textColor="#000"
+        android:textSize="28sp"
+        android:id="@+id/tvPlace"
+        android:layout_centerInParent="true"
+        />
+
+
+</RelativeLayout>

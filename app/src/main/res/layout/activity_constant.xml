@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg"
+    tools:context="com.example.secret.ai10.UI.ConstantActivity">
+
+   <include layout="@layout/top"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#eeeeee"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <!-- 开灯(布尔可写) -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:layout_marginBottom="1dp"
+            android:background="@color/white"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="31dp"
+                android:text="开灯"
+                android:textSize="21sp" />
+
+            <Switch
+                android:id="@+id/sw_bool_LED_OnOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="28dp"
+                android:switchMinWidth="46dp"
+                android:text=""
+                android:textOff=""
+                android:textOn=""
+                android:thumb="@drawable/thumb"
+                android:thumbTextPadding="15dp"
+                android:track="@drawable/track" />
+
+
+        </RelativeLayout>
+
+
+        <!-- 开关窗(布尔可写) -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:layout_marginBottom="1dp"
+            android:background="@color/white"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="31dp"
+                android:text="开关窗"
+                android:textSize="21sp" />
+
+
+            <Switch
+                android:id="@+id/sw_bool_Win_OnOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="28dp"
+                android:switchMinWidth="46dp"
+                android:text=""
+                android:textOff=""
+                android:textOn=""
+                android:thumb="@drawable/thumb"
+                android:thumbTextPadding="15dp"
+                android:track="@drawable/track" />
+
+
+        </RelativeLayout>
+
+
+        <!-- 开关窗帘(布尔可写) -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:layout_marginBottom="1dp"
+            android:background="@color/white"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tv3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="31dp"
+                android:text="开关窗帘"
+                android:textSize="21sp" />
+
+            <Switch
+                android:id="@+id/sw_bool_Curtain_OnOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="28dp"
+                android:switchMinWidth="46dp"
+                android:text=""
+                android:textOff=""
+                android:textOn=""
+                android:thumb="@drawable/thumb"
+                android:thumbTextPadding="15dp"
+                android:track="@drawable/track" />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

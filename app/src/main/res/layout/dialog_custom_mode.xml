@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:textSize="16sp"
+        android:text="模式名称"
+        android:id="@+id/tvModeName"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_below="@+id/tvModeName"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/et_bg"
+        android:id="@+id/etModeName"
+        />
+
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="41dp"
+        android:background="@drawable/et_bg"
+        android:layout_marginStart="25dp"
+        android:layout_below="@+id/etModeName"
+        android:layout_marginTop="23dp"
+        android:text="取消"
+        android:id="@+id/btnDialogCancel"
+        android:layout_marginBottom="15dp"
+        />
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="41dp"
+        android:background="@drawable/et_bg"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="25dp"
+        android:layout_below="@+id/etModeName"
+        android:layout_marginTop="23dp"
+        android:text="确定"
+        android:id="@+id/btnDialogConfirm"
+        />
+</RelativeLayout>

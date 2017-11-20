@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/bg"
+   >
+
+    <include layout="@layout/top"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#eee"/>
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="68dp"-->
+    <!--android:id="@+id/layout_custom"-->
+    <!--&gt;-->
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginStart="40dp"-->
+    <!--android:textSize="21sp"-->
+    <!--android:text="自定义"-->
+    <!--android:textColor="#000"-->
+    <!--android:layout_centerVertical="true"-->
+
+    <!--/>-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="26dp"-->
+    <!--android:layout_height="26dp"-->
+    <!--android:src="@drawable/button_more"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_marginEnd="20dp"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--/>-->
+    <!--</RelativeLayout>-->
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rv"
+        >
+
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>

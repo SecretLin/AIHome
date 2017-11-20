@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '26.0.2'
+    defaultConfig {
+        applicationId "com.example.secret.ai10"
+        minSdkVersion 18
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/DEPENDENCIES'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile files('libs/BLEasyConfig.jar')
+    compile files('libs/easylink2.0.jar')
+    compile files('libs/hiflying-iots-android-smartlink7.0.2.jar')
+    compile files('libs/GizWifiSDK.jar')
+    compile files('libs/jpush-android-2.1.5.jar')
+    compile files('libs/Lark7618SDK_noudp1606031910_0101.jar')
+    compile files('libs/libammsdk.jar')
+    compile files('libs/libEsptouch_v0.3.3.4_3.jar')
+    compile files('libs/libForEElink.jar')
+    compile files('libs/LSFSK_1.0.jar')
+    compile files('libs/mta-sdk-1.6.2.jar')
+    compile files('libs/OneShotConfig.jar')
+    compile files('libs/open_sdk_r5756.jar')
+    compile files('libs/pushservice-5.0.0.66.jar')
+    compile files('libs/simpleconfigwizardlib.jar')
+    compile files('libs/xUtils-2.6.14.jar')
+    compile files('libs/zxing.jar')
+    compile files('libs/httpcore-4.4.6.jar')
+    compile files('libs/httpclient-4.5.3.jar')
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.yanzhenjie:permission:1.1.0'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
+    testCompile 'junit:junit:4.12'
+    implementation files('libs/BaiduLBS_Android.jar')
+    implementation files('libs/json-lib-2.4-jdk15.jar')
+
+    compile 'com.github.ShogoMizumoto:ZDepthShadowLayout:1.0.4'
+}

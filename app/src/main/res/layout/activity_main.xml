@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.secret.ai10.view.SlideMenu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/slideMenu"
+    android:background="#fff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+    <!--两个子View-->
+    <!--引入菜单布局 通过getChildAt(0)获取-->
+    <include layout="@layout/layout_menu"/>
+
+    <!--引入主界面布局 通过getChildAt(1)获取-->
+    <include layout="@layout/layout_main"/>
+
+
+
+
+</com.example.secret.ai10.view.SlideMenu>
