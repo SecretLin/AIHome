@@ -523,8 +523,9 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements O
 	}
 
 
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
 
-
-
-
+	}
 }

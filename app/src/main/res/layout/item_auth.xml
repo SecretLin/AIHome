@@ -16,16 +16,28 @@
         android:layout_marginBottom="1dp"
         android:id="@+id/tvName"
         />
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp"
-        android:layout_centerVertical="true"
-        android:background="@drawable/un_check"
-        android:button="@null"
+    <!--<CheckBox-->
+        <!--android:id="@+id/checkBox"-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_marginEnd="10dp"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:background="@drawable/un_check"-->
+        <!--android:button="@null"-->
 
+        <!--/>-->
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="68dp"
+        android:background="#35C0C5"
+        android:textColor="#fff"
+        android:text="删除"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:id="@+id/btndelete"
+        android:visibility="gone"
+        android:layout_alignParentEnd="true"
         />
     <View
         android:layout_width="match_parent"

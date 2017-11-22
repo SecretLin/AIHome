@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bg"
-     >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@mipmap/bg">
 
     <RelativeLayout
         android:id="@+id/params"
@@ -14,11 +14,16 @@
         android:paddingRight="80dp"
         android:paddingTop="80dp" >
 
-        <com.example.secret.ai10.view.RoundProgressBar
+        <com.example.secret.ai10.view.RoundProgressBar1
             android:id="@+id/rpbConfig"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
+            app:ringColor="#eeeeee"
+            app:ringProgressColor="#afdff9"
+            app:textSize="18sp"
+            app:textColor="#333"
+            app:progress="0"
             android:layout_marginLeft="16dp" />
     </RelativeLayout>
 

@@ -131,6 +131,7 @@ public class GosUserModuleBaseActivity extends GosBaseActivity {
 		super.onResume();
 		// 每次返回activity都要注册一次sdk监听器，保证sdk状态能正确回调
 		GizWifiSDK.sharedInstance().setListener(gizWifiSDKListener);
+
 	}
 	
 

@@ -66,7 +66,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="1dp"
         android:background="@drawable/et_bg_rect"
-        android:gravity="center"
         android:orientation="horizontal" >
 
         <ImageView
@@ -74,15 +73,15 @@
             android:layout_width="25dp"
             android:layout_height="18dp"
             android:layout_marginLeft="17dp"
+            android:layout_gravity="center_vertical"
             android:contentDescription="@string/app_name"
             android:src="@drawable/wifi_icon" />
 
         <EditText
             android:id="@+id/etSSID"
             style="@style/EditTextStyle"
-            android:layout_width="0dp"
+            android:layout_width="170dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:background="@null"
             android:ems="10"
             android:gravity="center"
@@ -96,6 +95,7 @@
             android:layout_height="30dp"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="10dp"
+
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
             android:button="@null"
@@ -112,7 +112,6 @@
         android:layout_height="43dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/et_bg_rect"
-        android:gravity="center"
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal" >
 
@@ -121,18 +120,18 @@
             android:layout_width="15dp"
             android:layout_height="22dp"
             android:layout_marginLeft="20dp"
+            android:layout_gravity="center_vertical"
             android:contentDescription="@string/app_name"
             android:src="@mipmap/password" />
 
         <EditText
             android:id="@+id/etPsw"
             style="@style/EditTextStyle"
-            android:layout_width="0dp"
+            android:layout_width="170dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="7dp"
-            android:layout_weight="1"
             android:background="@null"
             android:ems="10"
+            android:layout_marginStart="18dp"
             android:gravity="center"
             android:hint="@string/softPsw_hint"
             android:inputType="textPassword"

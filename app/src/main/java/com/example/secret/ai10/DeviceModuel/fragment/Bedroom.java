@@ -465,6 +465,7 @@ public class Bedroom extends Fragment implements View.OnClickListener, TextView.
         public void didReceiveData(GizWifiErrorCode result, GizWifiDevice device,
                                    java.util.concurrent.ConcurrentHashMap<String, Object> dataMap, int sn) {
             Log.i("liang====", "接收到数据");
+
             if (result == GizWifiErrorCode.GIZ_SDK_SUCCESS && dataMap.get("data") != null) {
                 getDataFromReceiveDataMap(dataMap);
                 mHandler.sendEmptyMessage(handler_key.UPDATE_UI.ordinal());

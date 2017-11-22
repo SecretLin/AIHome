@@ -22,7 +22,8 @@ public class AuthSql extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE Auth(" +
-                "name TEXT DEFAULT NONE)");
+                "name TEXT ,isSelected INTEGER ,"+
+                "deviceName TEXT)");
     }
 
     public void saveContent(Auth auth){
@@ -30,24 +31,32 @@ public class AuthSql extends SQLiteOpenHelper {
         SQLiteDatabase dbWrite = getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("name",auth.getName());
+        cv.put("isSelected",auth.isSelected());
+        cv.put("deviceName",auth.getDeviceName());
 //        cv.put("isOpen",customMode.isOpen());
 
         dbWrite.insert("Auth",null,cv);
         dbWrite.close();
 
+        System.out.println("======saving...");
+
 
 
     }
 
-    public void queryContent(List<Auth> list){
+    public void queryContent(List<Auth> list,String deviceName){
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.query("Auth",null,null,null,null,null,null);
-        if (cursor.moveToNext()){
+        int count = 0;
+        Cursor cursor = db.query("Auth",null,"deviceName = ?",new String[]{deviceName},null,null,null);
+        while (cursor.moveToNext()){
             Auth auth = new Auth();
             String name = cursor.getString(0);
             auth.setName(name);
             list.add(auth);
+
+            count++;
         }
+        System.out.println("======query:"+count);
     }
 
 

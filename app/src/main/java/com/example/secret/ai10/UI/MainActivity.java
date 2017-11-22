@@ -336,7 +336,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 locationService.unregisterListener(BDLocListener); //注销掉监听
                 locationService.stop(); //停止定位服务
 
-
+                mHandler.removeCallbacks(mRunnable);
+                // 退出页面，取消设备订阅
+                if (mDevice != null) {
+                    mDevice.setSubscribe(false);
+                    mDevice.setListener(null);
+                }
             }
 
             @Override
@@ -356,6 +361,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 }
                 locationService.start();// 定位SDK
 
+                if (mDevice != null){
+                    mDevice.setSubscribe(true);
+                    System.out.println("=======device name:"+mDevice.getAlias());
+                    mDevice.setListener(gizWifiDeviceListener);
+                }
 
             }
 
@@ -459,22 +469,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
             //设备管理
             case R.id.l1:
                 Intent intent = new Intent(this,DeviceListActivity.class);
-//                Bundle bundle = new Bundle();
-//                bundle.putString("uid",uid);
-//                bundle.putString("token",token);
                 intent.putExtra("toActivity","设备管理");
-//                intent.putExtras(bundle);
                 startActivity(intent);
                 break;
 
             //权限管理
             case R.id.l2:
                 Intent intent1 = new Intent(this,DeviceListActivity.class);
-                Bundle bundle1 = new Bundle();
-//                bundle1.putString("uid",uid);
-//                bundle1.putString("token",token);
                 intent1.putExtra("toActivity","权限管理");
-//                intent1.putExtras(bundle1);
                 startActivity(intent1);
                 break;
 
@@ -519,7 +521,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             //模式
             case R.id.tvMode:
-                startActivity(new Intent(this, ModeActivity.class));
+                startActivityForResult(new Intent(this, ModeActivity.class),1001);
                 break;
             //常用
             case R.id.tvConstant:
@@ -558,23 +560,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     }
 
-//    public void updateDialog() {
-//        if (name.equals("大厅")) {
-//            layoutLiving.setBackgroundResource(R.mipmap.hall_blue);
-//        } else {
-//            layoutLiving.setBackgroundResource(R.mipmap.hall_white);
-//        }
-//        if (name.equals("浴室")) {
-//            layoutWC.setBackgroundResource(R.mipmap.wc_blue);
-//        } else {
-//            layoutWC.setBackgroundResource(R.mipmap.wc_white);
-//        }
-//        if (name.equals("卧室")) {
-//            layoutBed.setBackgroundResource(R.mipmap.bedroom_blue);
-//        } else {
-//            layoutBed.setBackgroundResource(R.mipmap.bedroom_white);
-//        }
-//    }
 
     class OnClickLintener implements View.OnClickListener {
 
@@ -591,7 +576,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                             AndPermission.rationaleDialog(MainActivity.this, arg1).show();
                         }
                     }).send();
-
+                    popwindow.dismiss();
                     break;
 
                 case R.id.addNewDevice:
@@ -601,6 +586,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                         Intent intent1 = new Intent(MainActivity.this, GosAirlinkChooseDeviceWorkWiFiActivity.class);
                         startActivity(intent1);
                     }
+                    popwindow.dismiss();
                     break;
 
                 default:
@@ -712,6 +698,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 Toast.makeText(this, "没有登录，不能绑定设备", Toast.LENGTH_SHORT).show();
             }
 
+            if (requestCode == 1001){
+
+            }
         }
     }
 

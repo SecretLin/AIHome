@@ -2,6 +2,7 @@ package com.example.secret.ai10.Adapter;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -90,6 +91,12 @@ public class ModeAdapter extends RecyclerView.Adapter {
         // hashMap.put(key2, value2);
         // hashMap.put(key3, value3);
         mdevice.write(hashMap, sn);
+
+        ModeActivity activity = (ModeActivity) context;
+        Intent intent = new Intent();
+        intent.putExtra("mode", (Integer) value);
+        activity.setResult(1001,intent);
+
         Log.i("liang", "下发命令：" + hashMap.toString());
     }
     @Override

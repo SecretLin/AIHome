@@ -31,7 +31,7 @@ public class OfflineDeviceActivity extends Activity {
     private RecyclerView rv;
     private DeviceListAdapter adapter;
     private GizWifiDevice mDevice;
-    private ScrollView llNoDevice;
+
 
     private TextView tvTitle;
 
@@ -54,16 +54,6 @@ public class OfflineDeviceActivity extends Activity {
         rv.setLayoutManager(new LinearLayoutManager(this));
 
 
-        //没有设备的时候
-        llNoDevice = (ScrollView) findViewById(R.id.llNoDevice);
-        final Button btnNoDevice = (Button) findViewById(R.id.btnNoDevice);
-        btnNoDevice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent1 = new Intent(OfflineDeviceActivity.this, GosAirlinkChooseDeviceWorkWiFiActivity.class);
-                startActivity(intent1);
-            }
-        });
 
         initDevices();
 
@@ -105,10 +95,6 @@ public class OfflineDeviceActivity extends Activity {
 
             if (!offlineBind.isEmpty()){
                 adapter.bindData(offlineBind);
-            }
-
-            else {
-                llNoDevice.setVisibility(View.VISIBLE);
             }
 
         }

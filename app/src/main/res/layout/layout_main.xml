@@ -76,30 +76,37 @@
             android:layout_marginLeft="190dp"
             android:layout_marginTop="128dp"
             />
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="湿度:92%"
-            android:id="@+id/tvHum"
-            android:textSize="17sp"
-            android:textColor="#505050"
+            android:orientation="horizontal"
             android:layout_below="@+id/tvTemp"
             android:layout_marginTop="2dp"
             android:layout_marginStart="120dp"
-            />
+            android:layout_centerHorizontal="true"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="湿度:92%"
+                android:id="@+id/tvHum"
+                android:textSize="17sp"
+                android:textColor="#505050"
+                android:layout_marginStart="10dp"
+                />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvCond"
-            android:text="雷阵雨"
-            android:layout_below="@+id/tvTemp"
-            android:layout_marginTop="2dp"
-            android:textSize="17sp"
-            android:layout_marginStart="9dp"
-            android:textColor="#505050"
-            android:layout_toEndOf="@+id/tvHum"
-            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvCond"
+                android:text="雷阵雨"
+                android:layout_below="@+id/tvTemp"
+                android:textSize="17sp"
+                android:layout_marginStart="9dp"
+                android:textColor="#505050"
+                />
+        </LinearLayout>
+
     </RelativeLayout>
 
 

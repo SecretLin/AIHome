@@ -163,6 +163,7 @@ public class ModeFragment extends Fragment {
             mDevice.setSubscribe(false);
             mDevice.setListener(null);
         }
+
     }
 
 

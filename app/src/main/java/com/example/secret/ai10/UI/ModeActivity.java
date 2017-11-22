@@ -23,6 +23,7 @@ public class ModeActivity extends FragmentActivity {
                 add(R.id.framelayout,new DeviceListFragment()).
                 commit();
 
+
     }
 
 

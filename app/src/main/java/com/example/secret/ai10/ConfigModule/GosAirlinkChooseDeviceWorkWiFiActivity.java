@@ -129,14 +129,14 @@ public class GosAirlinkChooseDeviceWorkWiFiActivity extends GosConfigModuleBaseA
 				etSSID.setText(NetUtils.getCurentWifiSSID(this));
 			}
 
-			// 当没有任何文字的时候设置为明文显示
-			if (TextUtils.isEmpty(etPsw.getText().toString())) {
-//				cbLaws.setChecked(true);
-				etPsw.setInputType(0x90);
-			} else {
-				etPsw.setInputType(0x81);
-//				cbLaws.setChecked(false);
-			}
+//			// 当没有任何文字的时候设置为明文显示
+//			if (TextUtils.isEmpty(etPsw.getText().toString())) {
+////				cbLaws.setChecked(true);
+//				etPsw.setInputType(0x90);
+//			} else {
+//				etPsw.setInputType(0x81);
+////				cbLaws.setChecked(false);
+//			}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -241,19 +241,53 @@ public class GosAirlinkChooseDeviceWorkWiFiActivity extends GosConfigModuleBaseA
 
 		case R.id.imgWiFiList:
 
-			AndPermission.with(this)
-					.requestCode(REQUEST_CODE_SETTING)
-					.permission(Manifest.permission.ACCESS_FINE_LOCATION).rationale(new RationaleListener() {
+//			AndPermission.with(this)
+//					.requestCode(REQUEST_CODE_SETTING)
+//					.permission(Manifest.permission.ACCESS_FINE_LOCATION).rationale(new RationaleListener() {
+//
+//				@Override
+//				public void showRequestPermissionRationale(int arg0, Rationale arg1) {
+//					AndPermission.rationaleDialog(GosAirlinkChooseDeviceWorkWiFiActivity.this, arg1).show();
+//				}
+//			}).start();
 
-				@Override
-				public void showRequestPermissionRationale(int arg0, Rationale arg1) {
-					AndPermission.rationaleDialog(GosAirlinkChooseDeviceWorkWiFiActivity.this, arg1).show();
+//			System.out.println("=======click wifi");
+
+
+			AlertDialog.Builder dia = new AlertDialog.Builder(GosAirlinkChooseDeviceWorkWiFiActivity.this);
+			View view = View.inflate(GosAirlinkChooseDeviceWorkWiFiActivity.this, R.layout.alert_gos_wifi_list, null);
+			ListView listview = (ListView) view.findViewById(R.id.wifi_list);
+			List<ScanResult> rsList = NetUtils.getCurrentWifiScanResult(this);
+			List<String> localList = new ArrayList<String>();
+			localList.clear();
+			wifiList = new ArrayList<ScanResult>();
+			wifiList.clear();
+			for (ScanResult sss : rsList) {
+
+				if (sss.SSID.contains(SoftAP_Start)) {
+				} else {
+					if (localList.toString().contains(sss.SSID)) {
+					} else {
+						localList.add(sss.SSID);
+						wifiList.add(sss);
+					}
 				}
-			})
-					.send();
-
-
-
+			}
+			WifiListAdapter adapter = new WifiListAdapter(wifiList);
+			listview.setAdapter(adapter);
+			listview.setOnItemClickListener(new OnItemClickListener() {
+				@Override
+				public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+					ScanResult sResult = wifiList.get(arg2);
+					String sSID = sResult.SSID;
+					etSSID.setText(sSID);
+					etPsw.setText("");
+					create.dismiss();
+				}
+			});
+			dia.setView(view);
+			create = dia.create();
+			create.show();
 
 			break;
 
@@ -486,7 +520,7 @@ public class GosAirlinkChooseDeviceWorkWiFiActivity extends GosConfigModuleBaseA
 		super.onSucceed(requestCode, grantPermissions);
 
 
-
+		System.out.println("request success");
 		AlertDialog.Builder dia = new AlertDialog.Builder(GosAirlinkChooseDeviceWorkWiFiActivity.this);
 		View view = View.inflate(GosAirlinkChooseDeviceWorkWiFiActivity.this, R.layout.alert_gos_wifi_list, null);
 		ListView listview = (ListView) view.findViewById(R.id.wifi_list);
@@ -529,7 +563,7 @@ public class GosAirlinkChooseDeviceWorkWiFiActivity extends GosConfigModuleBaseA
 		super.onFailed(requestCode, deniedPermissions);
 		{
 			// 权限申请失败回调。
-
+			System.out.println("request failed");
 			// 用户否勾选了不再提示并且拒绝了权限，那么提示用户到设置中授权。
 			if (AndPermission.hasAlwaysDeniedPermission(GosAirlinkChooseDeviceWorkWiFiActivity.this, deniedPermissions)) {
 				// 第一种：用默认的提示语。

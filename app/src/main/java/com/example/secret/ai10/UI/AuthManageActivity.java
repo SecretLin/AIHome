@@ -2,6 +2,7 @@ package com.example.secret.ai10.UI;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -44,9 +45,10 @@ public class AuthManageActivity extends Activity implements View.OnClickListener
     private LinearLayout btnAdd, btnEdit;
     private TextView tvTitle;
     private AuthAdapter adapter;
-
+    AuthSql authSql;
     String name = null;
     List<Auth> list = new ArrayList<>();
+    private Button btnNoAuth;
 
 
     // 数据点"RFID开门权限管理"对应的标识名
@@ -115,7 +117,9 @@ public class AuthManageActivity extends Activity implements View.OnClickListener
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_authe_manage);
         mDevice = getIntent().getParcelableExtra("device");
+        mDevice.setSubscribe(true);
         mDevice.setListener(gizWifiDeviceListener);
+
 
         tvTitle = (TextView) findViewById(R.id.tvTitle);
         tvTitle.setText("权限管理");
@@ -126,13 +130,13 @@ public class AuthManageActivity extends Activity implements View.OnClickListener
         btnAdd = (LinearLayout) findViewById(R.id.btnAdd);
         btnEdit = (LinearLayout) findViewById(R.id.btnEdit);
 
+        btnNoAuth = (Button) findViewById(R.id.btnNoDevice);
 
         tvCancel = (TextView) findViewById(R.id.tvCancel);
         tvSelectAll = (TextView) findViewById(R.id.tvSelectAll);
         tvCancelAll = (TextView) findViewById(R.id.tvCancelAll);
         tvCount = (TextView) findViewById(R.id.tvCount);
-        tvTitle = (TextView) findViewById(R.id.tvTitle);
-        tvTitle.setText("权限管理");
+
         layout_delete = (LinearLayout) findViewById(R.id.layout_delete);
         layout_select = (RelativeLayout) findViewById(R.id.layout_select);
         layoutTitle = (LinearLayout)findViewById(R.id.layoutTitle);
@@ -140,25 +144,26 @@ public class AuthManageActivity extends Activity implements View.OnClickListener
 
         rv = (RecyclerView) findViewById(R.id.rv);
 
-        adapter = new AuthAdapter(this);
+        adapter = new AuthAdapter(this,mDevice);
+        adapter.setListener(this);
         rv.setAdapter(adapter);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.addOnItemTouchListener(new RecyclerItemClickListener(this, rv, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                if (isLongClick){
-                    if (list.get(position).isSelected()){
-                        list.get(position).setSelected(false);
-                    }else {
-                        list.get(position).setSelected(true);
-                    }
-
-                    adapter.notifyItemChanged(position);
-
-                }
-                else {
-                    System.out.println("one~click~hhhhhhhhhhh");
-                }
+//                if (isLongClick){
+//                    if (list.get(position).isSelected()==1){
+//                        list.get(position).setSelected(0);
+//                    }else {
+//                        list.get(position).setSelected(1);
+//                    }
+//
+//                    adapter.notifyItemChanged(position);
+//
+//                }
+//                else {
+//                    System.out.println("one~click~hhhhhhhhhhh");
+//                }
 
 
             }
@@ -175,7 +180,7 @@ public class AuthManageActivity extends Activity implements View.OnClickListener
 
                 if (!adapter.isCheckBoxPress){
 
-                    list.get(position).setSelected(true);
+                    list.get(position).setSelected(1);
                     adapter.notifyItemChanged(position);
 
                     System.out.println("click~click~hhhh");
@@ -185,20 +190,28 @@ public class AuthManageActivity extends Activity implements View.OnClickListener
 
         btnAdd.setOnClickListener(this);
         btnEdit.setOnClickListener(this);
+        btnNoAuth.setOnClickListener(this);
 
+        tvCancel.setOnClickListener(this);
+        tvCancelAll.setOnClickListener(this);
+        tvSelectAll.setOnClickListener(this);
+        btnDelete.setOnClickListener(this);
 
         initData();
     }
 
     private void initData() {
 
-        AuthSql authSql = new AuthSql(this);
-        authSql.queryContent(list);
+        authSql = new AuthSql(this);
+        list.clear();
+        authSql.queryContent(list,mDevice.getRemark());
+
         if (list.isEmpty()){
             llNoAuth.setVisibility(View.VISIBLE);
         }
         else {
             adapter.bindData(list);
+
             llNoAuth.setVisibility(View.GONE);
         }
 
@@ -213,10 +226,23 @@ public class AuthManageActivity extends Activity implements View.OnClickListener
 
         switch (v.getId()) {
             case R.id.btnAdd:
-                sendCommand(KEY_RFID_KEY_C,1);
-                showdialog();
+//                System.out.println("=====rfid:"+data_RFID_Key_C);
+                if (data_RFID_Key_C == 0){
+                    toast("请将卡放在感应器前面,再点击添加");
+                    sendCommand(KEY_RFID_KEY_C,1);
+                }
+//                else if (data_RFID_Key_C == 1){
+//                    showdialog();
+//                }
                 break;
             case R.id.btnEdit:
+//                isLongClick = true;
+                adapter.isShow = true;
+                adapter.notifyDataSetChanged();
+
+                layoutTitle.setVisibility(View.GONE);
+                layout_delete.setVisibility(View.VISIBLE);
+                layout_select.setVisibility(View.VISIBLE);
                 break;
                  /*
             对话框的按钮事件
@@ -228,35 +254,60 @@ public class AuthManageActivity extends Activity implements View.OnClickListener
                 name = etDeviceName.getText().toString();
 
                 if (name != null) {
-                    if (data_RFID_Key_R == 3){
+                    progressDialog = new ProgressDialog(this);
+                    progressDialog.show();
+                    if (data_RFID_Key_R == 1 ||data_RFID_Key_R==3){
                         dialog.dismiss();
-                        AuthSql authSql = new AuthSql(this);
+                        progressDialog.dismiss();
                         Auth auth = new Auth();
                         auth.setName(name);
+                        auth.setDeviceName(mDevice.getRemark());
                         authSql.saveContent(auth);
+                        initData();
                         toast("添加权限成功");
+//
                     }
-                } else {
+//                    else {
+//                        toast("请重试");
+//                    }
+                }
+                else {
                     toast("备注不能为空");
                 }
                 break;
 
                 //删除按钮：
             case R.id.btndelete:
-                list.removeAll(adapter.selectedItems);
-                adapter.selectedItems.clear();
-                adapter.bindData(list);
-                layout_delete.setVisibility(View.GONE);
-                layout_select.setVisibility(View.GONE);
-                layoutTitle.setVisibility(View.VISIBLE);
-                adapter.isShow = false;
+                if (data_RFID_Key_C == 0){
+                    toast("请将卡放在感应器前面,再点击删除");
+                    sendCommand(KEY_RFID_KEY_C,2);
+                    return;
+                }
+                if (data_RFID_Key_C == 2){
+                    if (data_RFID_Key_R == 0){
+
+                    }
+//                    list.removeAll(adapter.selectedItems);
+//                    for (Auth a:adapter.selectedItems){
+//                        String name = a.getName();
+//                        authSql.deleteContent(name);
+//                    }
+//                    adapter.selectedItems.clear();
+//
+//                    layout_delete.setVisibility(View.GONE);
+//                    layout_select.setVisibility(View.GONE);
+//                    layoutTitle.setVisibility(View.VISIBLE);
+//                    adapter.isShow = false;
+//                    adapter.notifyDataSetChanged();
+                }
+
                 break;
             case R.id.tvSelectAll:
-                System.out.println(list.size());
+                System.out.println("======select all");
                 adapter.selectedItems.clear();
 
                 for (Auth d:list){
-                    d.setSelected(true);
+                    d.setSelected(1);
                 }
                 adapter.notifyDataSetChanged();
                 tvCancelAll.setVisibility(View.VISIBLE);
@@ -264,7 +315,7 @@ public class AuthManageActivity extends Activity implements View.OnClickListener
                 break;
             case R.id.tvCancelAll:
                 for (Auth d:adapter.selectedItems){
-                    d.setSelected(false);
+                    d.setSelected(0);
                 }
 
                 adapter.selectedItems.clear();
@@ -274,7 +325,7 @@ public class AuthManageActivity extends Activity implements View.OnClickListener
                 break;
             case R.id.tvCancel:
                 for (Auth d:adapter.selectedItems){
-                    d.setSelected(false);
+                    d.setSelected(0);
                 }
                 adapter.isShow = false;
                 layout_delete.setVisibility(View.GONE);
@@ -285,9 +336,15 @@ public class AuthManageActivity extends Activity implements View.OnClickListener
                 break;
 
             //没有权限
-            case R.id.llNoAuth:
-                sendCommand(KEY_RFID_KEY_C,1);
-                showdialog();
+            case R.id.btnNoDevice:
+
+                if (data_RFID_Key_C == 0){
+                    toast("请将卡放在感应器前面,再点击添加");
+                    sendCommand(KEY_RFID_KEY_C,1);
+                }
+//                else if (data_RFID_Key_C == 1){
+//                    showdialog();
+//                }
                 break;
         }
 
@@ -297,6 +354,7 @@ public class AuthManageActivity extends Activity implements View.OnClickListener
         Toast.makeText(this,s,Toast.LENGTH_SHORT).show();
     }
 
+    private ProgressDialog progressDialog;
 
     private AlertDialog dialog;
     private Button btnCancel, btnConfirm;
@@ -313,9 +371,13 @@ public class AuthManageActivity extends Activity implements View.OnClickListener
 
         btnConfirm.setOnClickListener(this);
         btnCancel.setOnClickListener(this);
-        dialog = builder.create();
-        dialog.setView(view, 0, 0, 0, 0);
-        dialog.show();
+        if (dialog==null){
+            dialog = builder.create();
+            dialog.setView(view, 0, 0, 0, 0);
+            dialog.show();
+        }
+
+//        adapter.notifyDataSetChanged();
     }
 
 
@@ -344,7 +406,22 @@ public class AuthManageActivity extends Activity implements View.OnClickListener
     protected void updateUI() {
 
         initData();
+        System.out.println("=====rfid:"+data_RFID_Key_C);
+        if (data_RFID_Key_C == 1){
+            showdialog();
 
+        }
+
+
+        if (data_RFID_Key_C == 2 ){
+            adapter.isDeleting = true;
+            adapter.notifyDataSetChanged();
+            if (data_RFID_Key_R == 1){
+                adapter.notifyDataSetChanged();
+                toast("删除成功");
+            }
+
+        }
 
     }
     /**
@@ -372,6 +449,8 @@ public class AuthManageActivity extends Activity implements View.OnClickListener
         // hashMap.put(key3, value3);
         mDevice.write(hashMap, sn);
         Log.i("liang", "下发命令：" + hashMap.toString());
+
+
     }
     /**
      * Description:页面加载后弹出等待框，等待设备可被控制状态回调，如果一直不可被控，等待一段时间后自动退出界面
@@ -434,6 +513,8 @@ public class AuthManageActivity extends Activity implements View.OnClickListener
         public void didReceiveData(GizWifiErrorCode result, GizWifiDevice device,
                                    java.util.concurrent.ConcurrentHashMap<String, Object> dataMap, int sn) {
             Log.i("liang====", "接收到数据");
+            System.out.println("=====result:"+result.name());
+            System.out.println("=====data:"+dataMap);
             if (result == GizWifiErrorCode.GIZ_SDK_SUCCESS && dataMap.get("data") != null) {
                 getDataFromReceiveDataMap(dataMap);
                 mHandler.sendEmptyMessage(handler_key.UPDATE_UI.ordinal());
@@ -462,6 +543,10 @@ public class AuthManageActivity extends Activity implements View.OnClickListener
                 if (dataKey.equals(KEY_RFID_KEY_R)) {
                     data_RFID_Key_R = (int) map.get(dataKey);
                 }
+                if (dataKey.equals(KEY_RFID_KEY_C)){
+                    data_RFID_Key_C = (int) map.get(dataKey);
+
+                }
             }
         }
     }
@@ -474,11 +559,11 @@ public class AuthManageActivity extends Activity implements View.OnClickListener
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+
 
         if (adapter.isShow){
             for (Auth d:adapter.selectedItems){
-                d.setSelected(false);
+                d.setSelected(0);
             }
             adapter.isShow = false;
             layout_delete.setVisibility(View.GONE);
@@ -486,7 +571,12 @@ public class AuthManageActivity extends Activity implements View.OnClickListener
             layoutTitle.setVisibility(View.VISIBLE);
             adapter.selectedItems.clear();
             adapter.notifyDataSetChanged();
+            return;
         }
-
+        if (dialog!=null && dialog.isShowing()){
+            dialog.dismiss();
+            return;
+        }
+        super.onBackPressed();
     }
 }

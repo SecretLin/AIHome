@@ -36,6 +36,8 @@ public class DeviceListActivity extends Activity {
 
     private String toActivity;
 
+    private Button btnNoDevice;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +53,7 @@ public class DeviceListActivity extends Activity {
 
         rv.setAdapter(adapter);
         rv.setLayoutManager(new LinearLayoutManager(this));
+
 
 
         //没有设备的时候
@@ -83,11 +86,11 @@ public class DeviceListActivity extends Activity {
                    startActivity(intent);
                }
                else if (toActivity.equals("权限管理")){
-                   Intent intent = new Intent(DeviceListActivity.this,AuthActivity.class);
+                   Intent intent1 = new Intent(DeviceListActivity.this,AuthManageActivity.class);
                    Bundle bundle = new Bundle();
                    bundle.putParcelable("device",device);
-                   intent.putExtras(bundle);
-                   startActivity(intent);
+                   intent1.putExtras(bundle);
+                   startActivity(intent1);
                }
                else if (toActivity.equals("监测")){
                    Intent intent = new Intent(DeviceListActivity.this,MonitorActivity.class);
@@ -151,7 +154,7 @@ public class DeviceListActivity extends Activity {
                     startActivity(intent);
                 }
                 else if (toActivity.equals("权限管理")){
-                    Intent intent = new Intent(DeviceListActivity.this,AuthActivity.class);
+                    Intent intent = new Intent(DeviceListActivity.this,AuthManageActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putParcelable("device",device);
                     intent.putExtras(bundle);

@@ -455,7 +455,7 @@ public class LivingRoom extends Fragment implements View.OnClickListener, TextVi
                 sendCommand(KEY_HALL_AIRC, (seekBar.getProgress() + HALL_AIRC_OFFSET) * HALL_AIRC_RATIO + HALL_AIRC_ADDITION);
                 break;
             case R.id.sb_data_Red:
-                System.out.println("=========stop red:"+seekBar.getProgress());
+
                 sendCommand(KEY_LED_R, (seekBar.getProgress() + LED_R_OFFSET ) * LED_R_RATIO + LED_R_ADDITION);
                 break;
             case R.id.sb_data_Green:

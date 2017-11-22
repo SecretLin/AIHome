@@ -1,5 +1,7 @@
 package com.example.secret.ai10.database;
 
+import com.gizwits.gizwifisdk.api.GizWifiDevice;
+
 /**
  * Created by Secret on 2017/11/20.
  */
@@ -7,7 +9,8 @@ package com.example.secret.ai10.database;
 public class Auth {
 
     private String name;
-    private boolean isSelected;
+    private int isSelected;
+    private String deviceName;
 
     public String getName() {
         return name;
@@ -17,11 +20,20 @@ public class Auth {
         this.name = name;
     }
 
-    public boolean isSelected() {
+    public int isSelected() {
         return isSelected;
     }
 
-    public void setSelected(boolean selected) {
+    public void setSelected(int selected) {
         isSelected = selected;
+    }
+
+
+    public String getDeviceName() {
+        return deviceName;
+    }
+
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
     }
 }
